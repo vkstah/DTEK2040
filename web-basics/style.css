@@ -1,0 +1,31 @@
+.link:hover {
+    color: green;
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+}
+
+ul > * + * {
+    margin-left: 1rem;
+}
+
+li {
+    color: red;
+}
+
+#different {
+    color: green;
+    list-style: circle;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.submit {
+    margin-top: 0.5rem;
+}
