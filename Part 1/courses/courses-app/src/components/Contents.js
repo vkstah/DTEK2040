@@ -2,11 +2,11 @@ import React from 'react'
 
 import Part from './Part'
 
-const Contents = ({contents}) => {
+const Contents = ({parts}) => {
   return (
     <div>
-        {contents.map(item => 
-            <Part content={item} />
+        {parts.map(item => 
+            <Part part={item} />
         )}
     </div>
   )

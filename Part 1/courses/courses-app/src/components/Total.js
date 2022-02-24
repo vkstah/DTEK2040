@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Total = ({total}) => {
+const Total = ({parts}) => {
   return (
     <p>
-        Total {total} exercises
+        Total {parts[0].exercises + parts[1].exercises + parts[2].exercises} exercises
     </p>
   )
 }
