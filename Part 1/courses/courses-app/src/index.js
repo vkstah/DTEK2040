@@ -7,32 +7,24 @@ import Total from './components/Total'
 
 const App = () => {
   const course = 'Superadvanced web and mobile programming'
-  const part1 = 'Basics of React'
-  const exercises1 = 8
-  const part2 = 'Using props'
-  const exercises2 = 10
-  const part3 = 'Component states'
-  const exercises3 = 12
-  const contentsArray = [
-    {
-      part: part1,
-      exercises: exercises1
-    },
-    {
-      part: part2,
-      exercises: exercises2
-    },
-    {
-      part: part3,
-      exercises: exercises3
-    }
-  ]
-  const totalExercises = exercises1 + exercises2 + exercises3
+  const part1 = {
+    name: 'Basics of React',
+    exercises: 8
+  }
+  const part2 = {
+    name: 'Using props',
+    exercises: 10
+  }
+  const part3 = {
+    name: 'Component states',
+    exercises: 12
+  }
+  const totalExercises = part1.exercises + part2.exercises + part3.exercises
 
   return (
     <div>
       <Header course={course} />
-      <Contents contents={contentsArray} />
+      <Contents contents={[part1, part2, part3]} />
       <Total total={totalExercises} />
     </div>
   )
