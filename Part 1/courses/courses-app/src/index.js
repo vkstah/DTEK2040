@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-// Components
 import Header from './components/Header'
 import Contents from './components/Contents'
 import Total from './components/Total'

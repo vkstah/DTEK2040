@@ -1,10 +1,12 @@
 import React from 'react'
 
+import Part from './Part'
+
 const Contents = ({contents}) => {
   return (
     <div>
         {contents.map(item => 
-            <p>{item.part} {item.exercises}</p>
+            <Part content={item} />
         )}
     </div>
   )
