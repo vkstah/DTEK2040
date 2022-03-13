@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Total = ({parts}) => {
+  const [ count, setCount ] = useState(null)
+
+  useEffect(() => {
+    let exerciseCount = 0
+    parts.forEach(part => {
+      exerciseCount += part.exercises
+    })
+    setCount(exerciseCount)
+  }, [parts])
+
   return (
     <p>
-        Total {parts[0].exercises + parts[1].exercises + parts[2].exercises} exercises
+        Total {count} exercises
     </p>
   )
 }
