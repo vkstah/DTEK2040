@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 
-import Button from './Button'
-
 const Form = ({handleSubmit}) => {
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
@@ -35,7 +33,7 @@ const Form = ({handleSubmit}) => {
       </div>
       <br />
       <div>
-        <Button />
+        <button type="submit">Lisää</button>
       </div>
     </form>
   )
