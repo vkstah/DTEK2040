@@ -17,9 +17,14 @@ class App extends React.Component {
 
   addNumber = (event) => {
     event.preventDefault()
+
     const personObject = {
       name: this.state.newName
     }
+
+    // If a match is found simply return.
+    if (this.state.persons.findIndex(person => person.name === personObject.name) !== -1) return
+
     const persons = this.state.persons.concat(personObject)
     this.setState({
       persons: persons,
