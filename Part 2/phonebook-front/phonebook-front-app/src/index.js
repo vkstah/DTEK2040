@@ -40,10 +40,14 @@ class App extends React.Component {
     // If a match is found simply return.
     if (this.state.persons.findIndex(person => person.name === personObject.name) !== -1) return
 
-    const persons = this.state.persons.concat(personObject)
-    this.setState({
-      persons: persons
-    })
+    axios
+      .post('http://localhost:3001/persons', personObject)
+      .then(response => {
+        this.setState({
+          persons: this.state.persons.concat(personObject)
+        })
+      })
+
   }
 
   render() {
