@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 
+import Form from './components/Form';
+import Person from './components/Person';
+
 class App extends React.Component {
 
   constructor(props) {
@@ -11,18 +14,16 @@ class App extends React.Component {
           name: 'Arto Hellas',
           number: '040-123456'
         }
-      ],
-      newName: '',
-      newNumber: ''
+      ]
     }
   }
 
-  addPerson = (event) => {
+  addPerson = (event, newName, newNumber) => {
     event.preventDefault()
 
     const personObject = {
-      name: this.state.newName,
-      number: this.state.newNumber
+      name: newName,
+      number: newNumber
     }
 
     // If a match is found simply return.
@@ -30,21 +31,7 @@ class App extends React.Component {
 
     const persons = this.state.persons.concat(personObject)
     this.setState({
-      persons: persons,
-      newName: '',
-      newNubmer : ''
-    })
-  }
-
-  handleNameChange = (event) => {
-    this.setState({
-      newName: event.target.value
-    })
-  }
-
-  handleNumberChange = (event) => {
-    this.setState({
-      newNumber: event.target.value
+      persons: persons
     })
   }
 
@@ -53,35 +40,11 @@ class App extends React.Component {
       <div>
 
         <h2>Puhelinluettelo</h2>
-        <form onSubmit={this.addPerson}>
-          <div>
-            <div>
-              <span>Nimi: </span>
-              <input
-                value={this.state.newName}
-                onChange={this.handleNameChange}
-              />
-            </div>
-            <br />
-            <div>
-              <span>Numero: </span>
-              <input
-                value={this.state.newNumber}
-                onChange={this.handleNumberChange}
-              />
-            </div>
-          </div>
-          <br />
-          <div>
-            <button type="submit">Lisää</button>
-          </div>
-        </form>
+        <Form handleSubmit={(event, newName, newNumber) => this.addPerson(event, newName, newNumber)} />
 
         <h2>Numerot</h2>
         {this.state.persons.map((person) => {
-          return <div key={person.name}>
-            {person.name}: {person.number}
-          </div>
+          return <Person person={person} key={person.name} />
         })}
 
       </div>
