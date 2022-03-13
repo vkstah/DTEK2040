@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
+import axios from 'axios'
 
 import Form from './components/Form';
 import Person from './components/Person';
@@ -16,6 +17,16 @@ class App extends React.Component {
         }
       ]
     }
+  }
+
+  componentDidMount() {
+    axios
+      .get('http://localhost:3001/persons')
+      .then(response => {
+        this.setState({
+          persons: response.data
+        })
+    })
   }
 
   addPerson = (event, newName, newNumber) => {
