@@ -8,18 +8,21 @@ class App extends React.Component {
     this.state = {
       persons: [
         {
-          name: 'Arto Hellas'
+          name: 'Arto Hellas',
+          number: '040-123456'
         }
       ],
-      newName: ''
+      newName: '',
+      newNumber: ''
     }
   }
 
-  addNumber = (event) => {
+  addPerson = (event) => {
     event.preventDefault()
 
     const personObject = {
-      name: this.state.newName
+      name: this.state.newName,
+      number: this.state.newNumber
     }
 
     // If a match is found simply return.
@@ -28,7 +31,8 @@ class App extends React.Component {
     const persons = this.state.persons.concat(personObject)
     this.setState({
       persons: persons,
-      newName: ''
+      newName: '',
+      newNubmer : ''
     })
   }
 
@@ -38,19 +42,36 @@ class App extends React.Component {
     })
   }
 
+  handleNumberChange = (event) => {
+    this.setState({
+      newNumber: event.target.value
+    })
+  }
+
   render() {
     return (
       <div>
 
         <h2>Puhelinluettelo</h2>
-        <form onSubmit={this.addNumber}>
+        <form onSubmit={this.addPerson}>
           <div>
-            <span>Nimi: </span>
-            <input 
-              value={this.state.newName}
-              onChange={this.handleNameChange}
-            />
+            <div>
+              <span>Nimi: </span>
+              <input
+                value={this.state.newName}
+                onChange={this.handleNameChange}
+              />
+            </div>
+            <br />
+            <div>
+              <span>Numero: </span>
+              <input
+                value={this.state.newNumber}
+                onChange={this.handleNumberChange}
+              />
+            </div>
           </div>
+          <br />
           <div>
             <button type="submit">Lisää</button>
           </div>
@@ -58,7 +79,9 @@ class App extends React.Component {
 
         <h2>Numerot</h2>
         {this.state.persons.map((person) => {
-          return <h3 key={person.name}>{person.name}</h3>
+          return <div key={person.name}>
+            {person.name}: {person.number}
+          </div>
         })}
 
       </div>
